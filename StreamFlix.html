@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix - Watch Movies & TV Shows Online</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for our Teal/Dark Theme */
+        :root {
+            --primary-bg: #141414; /* Deep Black Background */
+            --secondary-bg: #1f1f1f; /* Dark Grey for cards/rows */
+            --accent-teal: #00C9A7; /* Vibrant Teal Accent Color */
+            --text-light: #e5e5e5;
+            --text-muted: #999;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Pushes Logo to left, Sign In to right */
+            align-items: center;
+            padding: 15px 50px;
+            background-color: var(--primary-bg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        /* StreamFlix Logo Styling */
+        .logo {
+            color: var(--accent-teal); /* Teal Logo */
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-decoration: none; /* Crucial: removes underline from logo link */
+        }
+
+        .navbar nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-right: 25px;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        .navbar nav a:hover {
+            color: var(--accent-teal); /* Teal hover effect */
+        }
+        
+        /* FIX: Ensures the link wrapper for the button is properly aligned */
+        .user-actions a {
+            text-decoration: none;
+            height: 100%; 
+            display: flex;
+            align-items: center;
+        }
+
+        .user-actions button {
+            background-color: var(--accent-teal);
+            color: var(--primary-bg);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s;
+        }
+        
+        .user-actions button:hover {
+            background-color: #00A387;
+        }
+
+        /* --- Hero Section --- */
+        .hero-feature {
+            height: 90vh;
+            background: url('https://via.placeholder.com/1500x900/111111/FFFFFF?text=Stranger+Things+Featured+Title') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-top: 70px; 
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0) 50%, rgba(20, 20, 20, 1) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            padding-left: 50px;
+            max-width: 550px;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            color: var(--text-muted);
+        }
+
+        .play-btn, .info-btn {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            margin-right: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: opacity 0.3s;
+        }
+
+        .play-btn {
+            background-color: white;
+            color: black;
+        }
+
+        .info-btn {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: white;
+        }
+
+        .play-btn:hover, .info-btn:hover {
+            opacity: 0.8;
+        }
+
+
+        /* --- Content Rows --- */
+        .content-row {
+            padding: 20px 50px;
+            margin-top: -60px; 
+            position: relative;
+        }
+
+        .content-row h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: left;
+            padding-top: 20px;
+        }
+
+        .row-posters {
+            display: flex;
+            gap: 10px;
+            overflow-x: scroll; 
+            padding-bottom: 10px;
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+        
+        .row-posters::-webkit-scrollbar { 
+            display: none;
+        }
+
+        .poster {
+            flex-shrink: 0; 
+            width: 250px;
+            height: 140px;
+            background-color: var(--secondary-bg);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .poster:hover {
+            transform: scale(1.09); 
+            z-index: 5;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 50px;
+            border-top: 1px solid #292929;
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="streamflix.html" class="logo">StreamFlix</a> 
+        
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">TV Shows</a>
+            <a href="#">Webseries</a>
+            <a href="#">Being Watch</a>
+        </nav>
+        
+        <div class="user-actions">
+            <a href="signin.html">
+                 <button>Sign In</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero-feature">
+        <div class="hero-content">
+            <h1>Stranger Things (Season 5)</h1>
+            <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.</p>
+            <div class="buttons">
+                <button class="play-btn">▶ Play</button>
+                <button class="info-btn">ⓘ More Info</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <section class="content-row">
+        <h2>New Releases</h2>
+        <div class="row-posters">
+            <div class="poster">Release 1</div>
+            <div class="poster">Release 2</div>
+            <div class="poster">Release 3</div>
+            <div class="poster">Release 4</div>
+            <div class="poster">Release 5</div>
+        </div>
+    </section>
+
+    <section class="content-row">
+        <h2>Trending Now</h2>
+        <div class="row-posters">
+            <div class="poster">Trending 1</div>
+            <div class="poster">Trending 2</div>
+            <div class="poster">Trending 3</div>
+            <div class="poster">Trending 4</div>
+            <div class="poster">Trending 5</div>
+        </div>
+    </section>
+    
+    <section class="content-row">
+        <h2>Sci-Fi Thrillers</h2>
+        <div class="row-posters">
+            <div class="poster">Sci-Fi 1</div>
+            <div class="poster">Sci-Fi 2</div>
+            <div class="poster">Sci-Fi 3</div>
+            <div class="poster">Sci-Fi 4</div>
+            <div class="poster">Sci-Fi 5</div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 StreamFlix Clone. Questions? Contact us</p>
+    </footer>
+
+    <script>
+        // Check if the user is "logged in" when the homepage loads
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn');
+            const signInButton = document.querySelector('.user-actions button');
+            
+            if (isLoggedIn === 'true' && signInButton) {
+                // If logged in, change the button text to 'Account' and style it differently
+                signInButton.textContent = 'Account';
+                signInButton.style.backgroundColor = 'transparent';
+                signInButton.style.border = '1px solid var(--accent-teal)';
+                signInButton.style.color = 'var(--accent-teal)';
+            }
+        }
+
+        // Run the check when the page loads
+        window.onload = checkLoginStatus;
+    </script>
+</body>
+</html>

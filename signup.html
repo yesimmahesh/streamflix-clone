@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reusing the dark theme styles from signin.html */
+        :root {
+            --primary-bg: #141414;
+            --accent-teal: #00C9A7;
+            --text-light: #e5e5e5;
+            --text-muted: #999;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .logo {
+            color: var(--accent-teal);
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .signup-box {
+            background-color: rgba(0, 0, 0, 0.75); 
+            padding: 40px 68px; /* Slightly adjusted padding for more content */
+            border-radius: 4px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .signup-box h2 {
+            font-size: 2em;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333; 
+            color: white;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        
+        .input-group input:focus {
+            outline: 2px solid var(--accent-teal);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 24px;
+            background-color: var(--accent-teal);
+            color: black;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #00A387;
+            color: white;
+        }
+
+        .help-text {
+            color: var(--text-muted);
+            font-size: 0.8em;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .help-text a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-box">
+        <div class="logo">StreamFlix</div>
+        <h2>Create Account</h2>
+        
+        <form>
+            <div class="input-group">
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Create a password (min 6 chars)" required minlength="6">
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Full Name (optional)" >
+            </div>
+            <form>
+            <a href="StreamFlix.html" class="submit-btn" style="text-decoration: none; text-align: center;">
+                Continue
+            </a>
+            
+        </form>
+        
+        <div class="help-text">
+            Already have an account? <a href="signin.html">Sign In here</a>.
+        </div>
+    </div>
+
+</body>
+</html>
