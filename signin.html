@@ -34,11 +34,11 @@
             letter-spacing: -1px;
             text-align: center;
             margin-bottom: 20px;
+            text-decoration: none; /* Make sure the logo link doesn't have an underline */
         }
 
         .login-box {
-            /* This background color is crucial for the dark box effect */
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent dark box */
             padding: 60px 68px;
             border-radius: 4px;
             max-width: 450px;
@@ -60,10 +60,10 @@
             padding: 16px 20px;
             border: none;
             border-radius: 4px;
-            background-color: #333;
+            background-color: #333; /* Darker input field */
             color: white;
             font-size: 1em;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Important for padding */
         }
         
         .input-group input:focus {
@@ -105,7 +105,6 @@
 <body>
 
     <div class="login-box">
-        
         <a href="streamflix.html" class="logo">StreamFlix</a>
         <h2>Sign In</h2>
         
@@ -132,12 +131,12 @@
             const emailInput = document.getElementById('email').value;
             const passwordInput = document.getElementById('password').value;
             
-            // SIMULATING BACKEND CHECK
+            // --- SIMULATING BACKEND CHECK ---
             if (emailInput && passwordInput) {
-                // 1. SIMULATE PERSISTENCE
+                // 1. SIMULATE PERSISTENCE: Save a flag in Local Storage
                 localStorage.setItem('userLoggedIn', 'true');
                 
-                // 2. REDIRECT to the main page
+                // 2. REDIRECT to the main page (Assuming main page is streamflix.html)
                 window.location.href = "streamflix.html";
             } else {
                 alert('Please enter both email and password.');
